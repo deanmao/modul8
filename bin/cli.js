@@ -5,7 +5,7 @@ var fs = require('fs')
   , program = require('../node_modules/commander')
   , modul8 = require('../')
   , utils = require('../lib/utils')
-  , dir = fs.realpathSync()
+  , dir = fs.realpathSync('.')
   , basename = path.basename
   , dirname = path.dirname
   , resolve = path.resolve
@@ -101,7 +101,7 @@ function complete() {
       console.error("invalid plugin usage: -g path=[args]");
       process.exit();
     }
-    var rel = join(fs.realpathSync(), name);
+    var rel = join(fs.realpathSync('.'), name);
     if (fs.existsSync(rel)) {
       name = rel;
     }
